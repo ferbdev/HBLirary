@@ -1,4 +1,5 @@
-﻿using Ninject.Activation;
+﻿using Microsoft.EntityFrameworkCore;
+using Ninject.Activation;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,13 +22,10 @@ namespace webapi.Infra.Data.Providers
         }
 
         protected override LibraryContext CreateInstance(IContext context)
-        {optionsBuilder
-    .UseSqlServer(connectionString, providerOptions=>providerOptions.CommandTimeout(60))
-    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        {
+            //Context = new DbContext<LibraryContext>(options => options.us);
 
-            Context = new LibraryContext(ConnectionString.Name);
-
-            return Context;
+            return null;
         }
 
 

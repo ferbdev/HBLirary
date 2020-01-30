@@ -8,6 +8,7 @@ namespace webapi.Domain.Models
 {
     public class BookObject
     {
+        [Key]
         public int IdBook { get; set; }
 
         [MaxLength(30, ErrorMessage = "Limite máximo atingido")]

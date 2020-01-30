@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using web.api.Swagger;
 using webapi.Domain.Models;
+using webapi.Infra.Data.Context;
 
 namespace web.api
 {
@@ -18,24 +18,20 @@ namespace web.api
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            services.AddDbContextPool<LibraryContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DbConnection")));
+            services.AddApiVersioning();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Version = "v1", Title = "HBLibrary - API" });
+                c.SwaggerDoc("v1", new Info { Version = "v1", Title = "OPA - WCS OPERATIONS API" });
 
                 c.DocInclusionPredicate((docName, apiDesc) =>
                 {
@@ -62,6 +58,11 @@ namespace web.api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -71,25 +72,7 @@ namespace web.api
             });
 
             app.UseSwagger();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Employee}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }

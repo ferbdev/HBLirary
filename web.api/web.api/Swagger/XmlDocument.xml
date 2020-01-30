@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>PIC.API.UI</name>
+        <name>web.api</name>
     </assembly>
     <members>
     </members>

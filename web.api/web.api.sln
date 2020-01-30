@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.api", "web.api\web.api.csproj", "{621B3FE3-3E2A-441A-B647-3320F74161F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.api", "web.api\web.api.csproj", "{621B3FE3-3E2A-441A-B647-3320F74161F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.Domain", "webapi.Domain\webapi.Domain.csproj", "{ADF8E569-BE5D-472F-A792-2277BAC32EBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.Domain", "webapi.Domain\webapi.Domain.csproj", "{ADF8E569-BE5D-472F-A792-2277BAC32EBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.Infra", "webapi.Infra\webapi.Infra.csproj", "{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.Infra", "webapi.Infra\webapi.Infra.csproj", "{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.Infra.Data", "webapi.Infra.Data\webapi.Infra.Data.csproj", "{8029BCC3-3013-40EF-ADDB-987C09B3B9F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.Infra.Data", "webapi.Infra.Data\webapi.Infra.Data.csproj", "{8029BCC3-3013-40EF-ADDB-987C09B3B9F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
