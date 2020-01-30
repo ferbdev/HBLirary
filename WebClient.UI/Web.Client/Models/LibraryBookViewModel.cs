@@ -26,15 +26,19 @@ namespace Web.Client.Models
 
         public int IdBook { get; set; }
 
+        [MaxLength(30, ErrorMessage = "Limite máximo atingido")]
         [DisplayName("Nome do Livro")]
         public string BookName { get; set; }
 
+        [MaxLength(20, ErrorMessage = "Limite máximo atingido")]
         [DisplayName("Autor")]
         public string BookAuthor { get; set; }
 
+        [MaxLength(20, ErrorMessage = "Limite máximo atingido")]
         [DisplayName("Editora")]
         public string BookPublisher { get; set; }
 
+        [MaxLength(20, ErrorMessage = "Limite máximo atingido")]
         [DisplayName("País")]
         public string BookRegion { get; set; }
 

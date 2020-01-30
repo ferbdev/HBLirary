@@ -13,7 +13,10 @@ namespace Web.Client.Controllers
         {
             var booksList = new List<LibraryBookViewModel>();
 
-            booksList.Add(new LibraryBookViewModel(1, "aaa", "aaa", "aaa", "aaa", DateTime.Now));
+            for (int i = 0; i < 20; i++)
+            {
+                booksList.Add(new LibraryBookViewModel(i, "aaa" + i.ToString(), "aaa", "aaa", "aaa", DateTime.Now));
+            }
 
             return View(booksList);
         }
