@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Web.Client.Models.LibraryBookViewModel>
+
+@{
+    ViewData["Title"] = "Livros";
+}
+
+<h2>Livros disponíveis</h2>
+
+
+
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPublisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookRegion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookReleaseDate)
+            </th>
+            <th>
+                <a asp-action="CreateOrEdit" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Novo Livro</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAuthor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookPublisher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookRegion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookReleaseDate)
+                </td>
+                <td>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <a asp-action="CreateOrEdit" asp-route-id="@item.IdBook"><i class="fa fa-marker fa-lg"></i></a>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <a asp-action="Delete" asp-route-id="@item.IdBook" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
