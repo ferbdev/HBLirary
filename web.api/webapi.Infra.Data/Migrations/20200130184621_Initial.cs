@@ -9,7 +9,7 @@ namespace webapi.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: "Books",
                 columns: table => new
                 {
                     IdBook = table.Column<int>(nullable: false)
@@ -22,14 +22,14 @@ namespace webapi.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.IdBook);
+                    table.PrimaryKey("PK_Books", x => x.IdBook);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Books");
         }
     }
 }

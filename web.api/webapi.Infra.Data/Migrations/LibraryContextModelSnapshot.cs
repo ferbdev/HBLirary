@@ -41,7 +41,7 @@ namespace webapi.Infra.Data.Migrations
 
                     b.HasKey("IdBook");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Books");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,6 +12,6 @@ namespace webapi.Infra.Data.Context
         {
         }
 
-        public DbSet<BookObject> Employees { get; set; }
+        public DbSet<BookObject> Books { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using webapi.Infra.Data.Context;
 namespace webapi.Infra.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20200130183944_Initial")]
+    [Migration("20200130184621_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace webapi.Infra.Data.Migrations
 
                     b.HasKey("IdBook");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Books");
                 });
 #pragma warning restore 612, 618
         }
