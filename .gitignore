@@ -161,3 +161,6 @@
 /web.api/webapi.Infra/obj/Debug/netcoreapp2.2/webapi.Infra.assets.cache
 /web.api/webapi.Infra/obj/Debug/netcoreapp2.2/webapi.Infra.csprojAssemblyReference.cache
 /web.api/webapi.Infra/webapi.Infra.csproj.user
+/web.api/web.api/bin/Debug/netcoreapp2.2/webapi.Domain.dll
+/web.api/web.api/bin/Debug/netcoreapp2.2/webapi.Domain.pdb
+/web.api/web.api/obj/Debug/netcoreapp2.2/web.api.csproj.CopyComplete
