@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.api", "web.api\web.api.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.Domain", "webapi.Domain\webapi.Domain.csproj", "{ADF8E569-BE5D-472F-A792-2277BAC32EBD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.Infra", "webapi.Infra\webapi.Infra.csproj", "{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.Infra.Data", "webapi.Infra.Data\webapi.Infra.Data.csproj", "{8029BCC3-3013-40EF-ADDB-987C09B3B9F2}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{ADF8E569-BE5D-472F-A792-2277BAC32EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADF8E569-BE5D-472F-A792-2277BAC32EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADF8E569-BE5D-472F-A792-2277BAC32EBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4F5083E-F1E1-4B75-AB8E-634F11CC323B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8029BCC3-3013-40EF-ADDB-987C09B3B9F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8029BCC3-3013-40EF-ADDB-987C09B3B9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8029BCC3-3013-40EF-ADDB-987C09B3B9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using webapi.Domain.Models;
+using webapi.Domain.Repositories.LibraryBook;
 
 namespace web.api.V1
 {
@@ -11,39 +12,45 @@ namespace web.api.V1
     [Route("api/v{version:apiVersion}/configuration")]
     public class LibraryController
     {
+        private readonly ILibraryBookService _libraryService;
+        public LibraryController(ILibraryBookService libraryService)
+        {
+            _libraryService = libraryService;
+        }
+
         [Route("GetBookByName")]
         [HttpGet]
-        public BookObject GetBookByName(string bookName)
+        public List<BookObject> GetBooksByName(string bookName)
         {
-            return new BookObject();
+            return _libraryService.GetBooksByName(bookName);
         }
 
         [Route("GetAllBooks")]
         [HttpGet]
         public List<BookObject> GetAllBooks()
         {
-            return new List<BookObject>();
+            return _libraryService.GetAllBooks();
         }
 
         [Route("DeleteBookById")]
         [HttpPost]
         public DefaultMethodResultObject DeleteBookById(int id)
         {
-            return new DefaultMethodResultObject();
+            return _libraryService.DeleteBookById(id);
         }
 
         [Route("InsertBook")]
         [HttpPost]
         public DefaultMethodResultObject InsertBook(BookObject bookObject)
         {
-            return new DefaultMethodResultObject();
+            return _libraryService.InsertBook(bookObject);
         }
 
         [Route("UpdateBook")]
         [HttpPost]
         public DefaultMethodResultObject UpdateBook(BookObject bookObject)
         {
-            return new DefaultMethodResultObject();
+            return _libraryService.UpdateBook(bookObject);
         }
     }
 }

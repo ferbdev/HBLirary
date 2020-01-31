@@ -9,8 +9,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Linq;
 using System.Reflection;
 using web.api.Swagger;
-using webapi.Domain.Models;
+using webapi.Domain.Repositories.LibraryBook;
 using webapi.Infra.Data.Context;
+using webapi.Infra.Data.Repositories.LibraryBook;
 
 namespace web.api
 {
@@ -49,10 +50,9 @@ namespace web.api
                 c.DocumentFilter<SetVersionInPaths>();
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<ILibraryBookService, LibraryBookService>();
 
-            //DbContextOptions teste = new DbContextOptions().op
-            //services.AddDbContext<BookObject>();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

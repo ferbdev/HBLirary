@@ -10,8 +10,4 @@
     <None Remove="NewFolder\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

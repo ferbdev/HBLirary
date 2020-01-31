@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using webapi.Domain.Models;
 
-namespace webapi.Domain.Services.LibraryBook
+namespace webapi.Domain.Repositories.LibraryBook
 {
     public interface ILibraryBookService
     {
-        BookObject GetBookByName(string bookName);
+        List<BookObject> GetBookById(int idBook);
+        List<BookObject> GetBooksByName(string bookName);
 
         List<BookObject> GetAllBooks();
 
