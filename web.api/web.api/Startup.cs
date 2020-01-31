@@ -32,7 +32,7 @@ namespace web.api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Version = "v1", Title = "OPA - WCS OPERATIONS API" });
+                c.SwaggerDoc("v1", new Info { Version = "v1", Title = "HB Library - API" });
 
                 c.DocInclusionPredicate((docName, apiDesc) =>
                 {
@@ -67,7 +67,7 @@ namespace web.api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("../swagger/v1/swagger.json", "WCS OPERATIONS API V1");
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "HB Library - API");
                 c.InjectStylesheet("../swagger-ui/custom.css");
             });
 
