@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Web.Client.Models.LibraryBookViewModel>
+﻿@model IEnumerable<Web.Client.Domain.Models.BookObject>
 
 @{
     ViewData["Title"] = "Livros";
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group col-md-5">
-                            <a asp-action="Delete" asp-route-id="@item.IdBook" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.IdBook" class="text-danger ml-1" onclick="return confirm('Deseja realmente excluir este livro?')"><i class="fa fa-trash-alt fa-lg"></i></a>
                         </div>
                     </div>
                 </td>

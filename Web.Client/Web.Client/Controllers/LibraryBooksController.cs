@@ -3,31 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Web.Client.Domain.Models;
+using Web.Client.Domain.Services;
 using Web.Client.Models;
 
 namespace Web.Client.Controllers
 {
     public class LibraryBooksController : Controller
     {
+        private readonly ILibraryService _libraryService;
+        public LibraryBooksController(ILibraryService libraryService)
+        {
+            _libraryService = libraryService;
+        }
+
         public IActionResult Index()
         {
-            var booksList = new List<LibraryBookViewModel>();
 
-            for (int i = 0; i < 20; i++)
-            {
-                booksList.Add(new LibraryBookViewModel(i, "aaa" + i.ToString(), "aaa", "aaa", "aaa", DateTime.Now));
-            }
+            List<BookObject> bookList = _libraryService.GetAllBooks();
 
-            return View(booksList);
+            return View(bookList);
         }
 
         // GET: Employee/Create
-        public IActionResult CreateOrEdit(int id = 0)
+        public IActionResult CreateOrEdit(int id)
         {
-            if (id == 0)
-                return View(new LibraryBookViewModel());
+            BookObject libraryBook = new BookObject();
+            if (id > 0)
+                libraryBook = _libraryService.GetBookById(id);
+
+            if (libraryBook.IdBook == 0)
+                return View(new BookObject());
             else
-                return View(new LibraryBookViewModel(1, "aaa", "aaa", "aaa", "aaa", DateTime.Now));
+            {
+                return View(libraryBook);
+            }
         }
 
         // POST: Employee/Create
@@ -35,17 +45,17 @@ namespace Web.Client.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateOrEdit([Bind("IdBook,BookName,BookAuthor,BookPublisher,BookRegion,BookReleaseDate")] LibraryBookViewModel libraryBook)
+        public async Task<IActionResult> CreateOrEditSave([Bind("IdBook,BookName,BookAuthor,BookPublisher,BookRegion,BookReleaseDate")] BookObject libraryBook)
         {
             if (ModelState.IsValid)
             {
                 if (libraryBook.IdBook == 0)
                 {
-                    //_context.Add(employee);
+                    _libraryService.InsertBook(libraryBook);
                 }
                 else
                 {
-                    //_context.Update(employee);
+                    _libraryService.UpdateBook(libraryBook);
                 }
                 //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -58,9 +68,8 @@ namespace Web.Client.Controllers
         // GET: Employee/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            //var employee = await _context.Employees.FindAsync(id);
-            //_context.Employees.Remove(employee);
-            //await _context.SaveChangesAsync();
+            _libraryService.DeleteBookByID(id.Value);
+
             return RedirectToAction(nameof(Index));
         }
     }

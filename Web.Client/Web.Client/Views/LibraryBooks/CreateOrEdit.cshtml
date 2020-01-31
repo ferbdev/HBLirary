@@ -1,4 +1,4 @@
-﻿@model Web.Client.Models.LibraryBookViewModel
+﻿@model Web.Client.Domain.Models.BookObject
 
 @{
     ViewData["Title"] = "Criar/Editar";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-10">
-        <form asp-action="CreateOrEdit">
+        <form asp-action="CreateOrEditSave">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-row">
                 <input type="hidden" asp-for="IdBook" />

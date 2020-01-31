@@ -1,0 +1,283 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "HB Library - API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/configuration/GetBookByName": {
+      "get": {
+        "tags": [
+          "Library"
+        ],
+        "operationId": "GetBooksByName",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "bookName",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BookObject"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/configuration/GetAllBooks": {
+      "get": {
+        "tags": [
+          "Library"
+        ],
+        "operationId": "GetAllBooks",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BookObject"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/configuration/DeleteBookById": {
+      "post": {
+        "tags": [
+          "Library"
+        ],
+        "operationId": "DeleteBookById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "query",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DefaultMethodResultObject"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/configuration/InsertBook": {
+      "post": {
+        "tags": [
+          "Library"
+        ],
+        "operationId": "InsertBook",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "IdBook",
+            "in": "query",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "BookName",
+            "in": "query",
+            "maxLength": 30
+          },
+          {
+            "type": "string",
+            "name": "BookAuthor",
+            "in": "query",
+            "maxLength": 20
+          },
+          {
+            "type": "string",
+            "name": "BookPublisher",
+            "in": "query",
+            "maxLength": 20
+          },
+          {
+            "type": "string",
+            "name": "BookRegion",
+            "in": "query",
+            "maxLength": 20
+          },
+          {
+            "type": "string",
+            "name": "BookReleaseDate",
+            "in": "query",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DefaultMethodResultObject"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/configuration/UpdateBook": {
+      "post": {
+        "tags": [
+          "Library"
+        ],
+        "operationId": "UpdateBook",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "IdBook",
+            "in": "query",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "BookName",
+            "in": "query",
+            "maxLength": 30
+          },
+          {
+            "type": "string",
+            "name": "BookAuthor",
+            "in": "query",
+            "maxLength": 20
+          },
+          {
+            "type": "string",
+            "name": "BookPublisher",
+            "in": "query",
+            "maxLength": 20
+          },
+          {
+            "type": "string",
+            "name": "BookRegion",
+            "in": "query",
+            "maxLength": 20
+          },
+          {
+            "type": "string",
+            "name": "BookReleaseDate",
+            "in": "query",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DefaultMethodResultObject"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/configuration/GetBookById": {
+      "get": {
+        "tags": [
+          "Library"
+        ],
+        "operationId": "GetBookById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "query",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BookObject"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BookObject": {
+      "type": "object",
+      "properties": {
+        "idBook": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bookName": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "bookAuthor": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "bookPublisher": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "bookRegion": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "bookReleaseDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "DefaultMethodResultObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

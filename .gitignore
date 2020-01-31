@@ -292,3 +292,5 @@
 /web.api/webapi.Infra/bin/Debug/netcoreapp2.2/webapi.Infra.Data.dll
 /web.api/webapi.Infra/bin/Debug/netcoreapp2.2/webapi.Infra.Data.pdb
 /web.api/webapi.Infra/obj/Debug/netcoreapp2.2/webapi.Infra.csproj.CopyComplete
+/Web.Client/.vs/WebClient.UI/v16/Server/sqlite3/storage.ide-shm
+/Web.Client/.vs/WebClient.UI/v16/Server/sqlite3/storage.ide-wal

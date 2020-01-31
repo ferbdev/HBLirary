@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Web.Client.Domain.Models;
+using Web.Client.Domain.Services;
+using Web.Client.Infra.Services;
 
 namespace Web.Client
 {
@@ -16,10 +20,10 @@ namespace Web.Client
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,6 +35,20 @@ namespace Web.Client
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var mapperConfiguration = new MapperConfiguration(config =>
+            {
+                config.CreateMap<Web.Client.Infra.HBLibraryService.BookObject, Web.Client.Domain.Models.BookObject>()
+                .ForMember(dest => dest.BookReleaseDate, m => m.MapFrom(a => a.BookReleaseDate.Value.DateTime));
+                config.CreateMap<Web.Client.Infra.HBLibraryService.DefaultMethodResultObject, Web.Client.Domain.Models.DefaultMethodResultObject>();
+            });
+
+            IMapper mapper = mapperConfiguration.CreateMapper();
+
+            services.AddSingleton(mapper);
+
+            services.AddSingleton(new Configs(_configuration.GetConnectionString("ApiUrl")));
+
+            services.AddTransient<ILibraryService, LibraryService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
