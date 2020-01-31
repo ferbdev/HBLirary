@@ -112,9 +112,9 @@ namespace webapi.Infra.Data.Repositories.LibraryBook
             return result;
         }
 
-        public List<BookObject> GetBookById(int idBook)
+        public BookObject GetBookById(int idBook)
         {
-            var result = _context.Books.Where(x => x.IdBook == idBook).ToList();
+            var result = _context.Books.Where(x => x.IdBook == idBook).FirstOrDefault();
 
             return result;
         }

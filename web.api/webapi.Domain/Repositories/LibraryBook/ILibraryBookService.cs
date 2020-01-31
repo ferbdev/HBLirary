@@ -7,7 +7,7 @@ namespace webapi.Domain.Repositories.LibraryBook
 {
     public interface ILibraryBookService
     {
-        List<BookObject> GetBookById(int idBook);
+        BookObject GetBookById(int idBook);
         List<BookObject> GetBooksByName(string bookName);
 
         List<BookObject> GetAllBooks();
