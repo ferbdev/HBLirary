@@ -49,7 +49,7 @@ namespace webapi.Infra.Data.Repositories.LibraryBook
 
         public List<BookObject> GetAllBooks()
         {
-            var result = _context.Books.ToList();
+            var result = _context.Books.OrderBy(x => x.BookName).ToList();
 
             return result;
         }
@@ -121,7 +121,7 @@ namespace webapi.Infra.Data.Repositories.LibraryBook
 
         public List<BookObject> GetBooksByName(string bookName)
         {
-            var result = _context.Books.Where(x => x.BookName.Contains(bookName)).ToList();
+            var result = _context.Books.Where(x => x.BookName.Contains(bookName)).OrderBy(x => x.BookName).ToList();
 
             return result;
         }
