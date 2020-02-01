@@ -11,10 +11,12 @@ namespace Web.Client.Domain.Models
 
         public int IdBook { get; set; }
 
+        [Required]
         [MaxLength(30, ErrorMessage = "Limite máximo atingido")]
         [DisplayName("Nome do Livro")]
         public string BookName { get; set; }
 
+        [Required]
         [MaxLength(20, ErrorMessage = "Limite máximo atingido")]
         [DisplayName("Autor")]
         public string BookAuthor { get; set; }
@@ -27,8 +29,7 @@ namespace Web.Client.Domain.Models
         [DisplayName("País")]
         public string BookRegion { get; set; }
 
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        //[DataType(DataType.Date)]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [DisplayName("Data de lançamento")]
         public DateTime BookReleaseDate { get; set; }

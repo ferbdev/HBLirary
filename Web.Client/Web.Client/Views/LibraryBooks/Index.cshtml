@@ -8,77 +8,79 @@
 
 @*<div class="container">*@
 <form asp-action="Index">
-<div class="row mb-4">
-    <div class="col-md-6">
-        <div id="custom-search-input">
-            <div class="input-group col-md-12">
-                <input type="text" id="txtBookName" value="@ViewBag.BookName" name="txtBookName" class="form-control" placeholder="Nome do livro" />
-                <span class="input-group-btn">
-                    <input type="submit" value="Pesquisar" class="btn btn-primary" />
-                </span>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" id="txtBookName" value="@ViewBag.BookName" name="txtBookName" class="form-control" placeholder="Nome do livro" />
+                    <span class="input-group-btn">
+                        <input type="submit" value="Pesquisar" class="btn btn-primary" />
+                    </span>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@*</div>*@
+    @*</div>*@
 </form>
 
-<table id="dtVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="10" width="100%">
-    <thead>
-        <tr>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.BookName)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.BookAuthor)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.BookPublisher)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.BookRegion)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.BookReleaseDate)
-            </th>
-            <th class="th-sm">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-                    <a asp-action="CreateOrEdit" class="btn btn-outline-success align-content-center col-md-12" align="center"><i class="far fa-plus-square"></i> Novo Livro</a>
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="container h-100">
+    <table class="table table-striped table-sm" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BookName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BookAuthor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BookPublisher)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BookRegion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BookReleaseDate)
-                </td>
-                <td>
+                <th class="th-sm">
+                    @Html.DisplayNameFor(model => model.BookName)
+                </th>
+                <th class="th-sm">
+                    @Html.DisplayNameFor(model => model.BookAuthor)
+                </th>
+                <th class="th-sm">
+                    @Html.DisplayNameFor(model => model.BookPublisher)
+                </th>
+                <th class="th-sm">
+                    @Html.DisplayNameFor(model => model.BookRegion)
+                </th>
+                <th class="th-sm">
+                    @Html.DisplayNameFor(model => model.BookReleaseDate)
+                </th>
+                <th class="th-sm">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-                        <div class="form-group col-md-6">
-                            <a asp-action="CreateOrEdit" asp-route-id="@item.IdBook"><i class="fa fa-marker fa-lg"></i></a>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <a asp-action="Delete" asp-route-id="@item.IdBook" class="text-danger ml-1" onclick="return confirm('Deseja realmente excluir este livro?')"><i class="fa fa-trash-alt fa-lg"></i></a>
-                        </div>
+                        <a asp-action="CreateOrEdit" class="btn btn-outline-success align-content-center col-md-12" align="center"><i class="far fa-plus-square"></i> Novo Livro</a>
                     </div>
-                </td>
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookAuthor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookPublisher)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookRegion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookReleaseDate)
+                    </td>
+                    <td>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+                            <div class="form-group col-md-6">
+                                <a asp-action="CreateOrEdit" asp-route-id="@item.IdBook"><i class="fa fa-marker fa-lg"></i></a>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <a asp-action="Delete" asp-route-id="@item.IdBook" class="text-danger ml-1" onclick="return confirm('Deseja realmente excluir este livro?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
