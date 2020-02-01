@@ -27,7 +27,9 @@ namespace Web.Client.Domain.Models
         [DisplayName("País")]
         public string BookRegion { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [DisplayName("Data de lançamento")]
         public DateTime BookReleaseDate { get; set; }
     }
