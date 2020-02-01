@@ -17,10 +17,16 @@ namespace Web.Client.Controllers
             _libraryService = libraryService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string txtBookName)
         {
+            List<BookObject> bookList = new List<BookObject>();
 
-            List<BookObject> bookList = _libraryService.GetAllBooks();
+            if (!string.IsNullOrWhiteSpace(txtBookName))
+                bookList = _libraryService.GetBookByName(txtBookName);
+            else
+                bookList = _libraryService.GetAllBooks();
+
+            ViewBag.BookName = txtBookName;
 
             return View(bookList);
         }
@@ -65,7 +71,6 @@ namespace Web.Client.Controllers
         }
 
 
-        // GET: Employee/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             _libraryService.DeleteBookByID(id.Value);

@@ -8,10 +8,6 @@ namespace Web.Client.Domain.Models
 {
     public class BookObject
     {
-        public BookObject()
-        {
-
-        }
 
         public int IdBook { get; set; }
 
