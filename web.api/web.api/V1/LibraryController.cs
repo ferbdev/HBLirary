@@ -25,13 +25,6 @@ namespace web.api.V1
             return _libraryService.GetBooksByName(bookName);
         }
 
-        [Route("GetBookByNameTest")]
-        [HttpGet]
-        public List<BookObject> GetBookByNameTest(string bookName)
-        {
-            return _libraryService.GetBooksByName(bookName);
-        }
-
         [Route("GetBookById")]
         [HttpGet]
         public BookObject GetBookById(int id)
