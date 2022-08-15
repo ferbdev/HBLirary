@@ -32,3 +32,13 @@ jobs:
     - name: Test
       working-directory: ./Web.Client
       run: dotnet test --no-build --verbosity normal
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: 'buenotest.com'
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy dev
+    
